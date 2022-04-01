@@ -13,7 +13,7 @@ export class Track extends React.Component {
         if (this.props.isRemoval) {
             return <button className="Track-action" >-</button>
         } else {
-            return <button className="Track-action" onClick={this.addTrack} >++</button>
+            return <button className="Track-action" onClick={this.addTrack} >+</button>
         }
         
     }
