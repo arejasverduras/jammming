@@ -26,6 +26,13 @@ export class App extends React.Component {
         artist: 'Luiz Bonfa',
         album: 'The Brazilian Scene'
       }
+    ],
+    playlistName: "Michiel's Customs",
+    playlistTracks: [
+      {name: "One", artist: "AOne", album: "A-type", id: 1 },
+      {name: "Two", artist: "ATwo", album: "A-type", id: 2 },
+      {name: "Three", artist: "AThree", album: "A-type", id: 3 },
+      {name: "Four", artist: "AFour", album: "A-type", id: 4 }
     ]
     }
   }
@@ -37,7 +44,7 @@ export class App extends React.Component {
       <SearchBar />
       <div className="App-playlist">
         <SearchResults searchResults={this.state.searchResults} />
-        <Playlist />
+        <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@ export class Track extends React.Component {
         return(
             <div className="Track">
   <div className="Track-information">
-    <h3 key={this.props.track.key}>
+    <h3>
         {this.props.track.name}
         </h3>
     <p>
