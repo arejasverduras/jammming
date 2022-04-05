@@ -31,7 +31,11 @@ const Spotify = {
     search(searchTerm) {
         //accepts search term input paramter
         //pass the search term value (term) to a Spotify Request
-        fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`).then(response => {
+        fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`, {
+            headers: {
+                Authorization: `Bearer${userAccessToken}`
+            }
+        }).then(response => {
             if (response.ok) {
                 return response.json();
             }
@@ -40,7 +44,23 @@ const Spotify = {
         ).then(jsonResponse => {
             //code to execute with jsonReeponse
             // return the response as a list of tracks in json format
-
+            console.log(jsonResponse);
+            let arrayOfTracks = [];
+            
+            if (jsonResponse.tracks) {
+            arrayOfTracks = 
+            jsonResponse.map(resTrack => {
+                const track = {
+                  ID: resTrack.id,
+                  Name: resTrack.name,
+                  Artist: resTrack.artists[0].name,
+                  Album: resTrack.album.name,
+                  URI: resTrack.uri
+                }
+                return track;
+            })
+        }
+            return arrayOfTracks;
         })    
     }  
 };
