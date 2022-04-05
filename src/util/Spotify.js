@@ -3,7 +3,7 @@ const redirectURI = "http://localhost:3000/";
 
 let userAccessToken;
 
-export const Spotify = {
+const Spotify = {
     getAccessToken () {
         if (userAccessToken) {
             return userAccessToken;
@@ -39,31 +39,23 @@ export const Spotify = {
                 Authorization: `Bearer${accessToken}`
             }
         }).then(response => {
-            if (response.ok) {
                 return response.json();
-            }
-            throw new Error('Request failed!');
-        }, networkError => console.log(networkError.message)
-        ).then(jsonResponse => {
+        }).then(jsonResponse => {
             //code to execute with jsonReeponse
             // return the response as a list of tracks in json format
             console.log(jsonResponse);
-            let arrayOfTracks = [];
-            
-            if (jsonResponse.tracks) {
-            arrayOfTracks = 
-            jsonResponse.tracks.items.map(resTrack => {
-                const track = {
-                  id: resTrack.id,
-                  name: resTrack.name,
-                  artist: resTrack.artists[0].name,
-                  album: resTrack.album.name,
-                  uri: resTrack.uri
-                }
-                return track;
-            })
-        }
-            return arrayOfTracks;
+           if (!jsonResponse.tracks) {
+               return [];
+           }
+            return jsonResponse.tracks.items.map(track => (
+                {
+                  id: track.id,
+                  name: track.name,
+                  artist: track.artists[0].name,
+                  album: track.album.name,
+                  uri: track.uri
+                }) 
+            )
         })    
     }  
 };

@@ -45,10 +45,9 @@ export class App extends React.Component {
   }
 
   search(term) {
-    Spotify.search(term).then(spotifyResults => {
-      this.setState({searchResults: spotifyResults })
+    Spotify.search(term).then(searchResults => {
+      this.setState({searchResults: searchResults})
     })
-   
   }
 
   addTrack(track){
