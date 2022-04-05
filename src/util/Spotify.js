@@ -3,7 +3,7 @@ const redirectURI = "http://localhost:3000/";
 
 let userAccessToken;
 
-const Spotify = {
+export const Spotify = {
     getAccessToken () {
         if (userAccessToken) {
             return userAccessToken;
@@ -28,12 +28,15 @@ const Spotify = {
             }
             
     },
-    search(searchTerm) {
+    search(term) {
+        //get the accessToken first!
+        const accessToken = Spotify.getAccessToken();
+
         //accepts search term input paramter
         //pass the search term value (term) to a Spotify Request
-        fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`, {
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: {
-                Authorization: `Bearer${userAccessToken}`
+                Authorization: `Bearer${accessToken}`
             }
         }).then(response => {
             if (response.ok) {
@@ -49,13 +52,13 @@ const Spotify = {
             
             if (jsonResponse.tracks) {
             arrayOfTracks = 
-            jsonResponse.map(resTrack => {
+            jsonResponse.tracks.items.map(resTrack => {
                 const track = {
-                  ID: resTrack.id,
-                  Name: resTrack.name,
-                  Artist: resTrack.artists[0].name,
-                  Album: resTrack.album.name,
-                  URI: resTrack.uri
+                  id: resTrack.id,
+                  name: resTrack.name,
+                  artist: resTrack.artists[0].name,
+                  album: resTrack.album.name,
+                  uri: resTrack.uri
                 }
                 return track;
             })
