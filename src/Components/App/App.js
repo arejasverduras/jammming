@@ -72,6 +72,7 @@ export class App extends React.Component {
     savePlaylist() {
       const trackURIs = this.state.playlistTracks.map(track => 
         track.uri); 
+        Spotify.savePlaylist(this.state.playlistName, trackURIs);
       
     }
 
