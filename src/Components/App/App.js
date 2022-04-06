@@ -4,7 +4,7 @@ import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
-import Spotify  from '../../util/Spotify';
+import { Spotify } from '../../util/Spotify';
 
 export class App extends React.Component {
   constructor(props){
@@ -31,6 +31,7 @@ export class App extends React.Component {
       {name: "Four", artist: "AFour", album: "A-type", id: 4 }
     ]
     }
+
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);

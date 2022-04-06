@@ -3,7 +3,7 @@ const redirectURI = "http://localhost:3000/";
 
 let userAccessToken;
 
-const Spotify = {
+export const Spotify = {
     getAccessToken () {
         if (userAccessToken) {
             return userAccessToken;
@@ -11,8 +11,8 @@ const Spotify = {
 //      check if response url contains accesstoken
         let urlString = window.location.href;
 
-        const accesTokenMatch = urlString.match('/access_token=([^&]*)/');
-        const expiresInMatch =  urlString.match('/expires_in=([^&]*)/')
+        const accesTokenMatch = urlString.match(/access_token=([^&]*)/);
+        const expiresInMatch =  urlString.match(/expires_in=([^&]*)/);
         
         if (accesTokenMatch && expiresInMatch)       
             {
@@ -27,7 +27,8 @@ const Spotify = {
                 window.location = accessUrl;
             }
             
-    },
+    }
+    ,
     search(term) {
         //get the accessToken first!
         const accessToken = Spotify.getAccessToken();
@@ -36,7 +37,7 @@ const Spotify = {
         //pass the search term value (term) to a Spotify Request
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: {
-                Authorization: `Bearer${accessToken}`
+                Authorization: `Bearer ${accessToken}`
             }
         }).then(response => {
                 return response.json();
@@ -56,8 +57,7 @@ const Spotify = {
                   uri: track.uri
                 }) 
             )
-        })    
+        });    
     }  
 };
 
-export default Spotify;
