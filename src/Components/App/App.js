@@ -21,11 +21,6 @@ export class App extends React.Component {
         name: 'Animal wisdom',
         artist: 'Brian Jonestown Massacre',
         album: 'Something else'
-      },{
-        id: 7,
-        name: 'In the shade of the Mango Tree',
-        artist: 'Luiz Bonfa',
-        album: 'The Brazilian Scene'
       }
     ],
     playlistName: "Michiel's Customs",
@@ -46,7 +41,7 @@ export class App extends React.Component {
 
   search(term) {
     Spotify.search(term).then(searchResults => {
-      this.setState({searchResults: searchResults})
+      this.setState({ searchResults: searchResults })
     })
   }
 
