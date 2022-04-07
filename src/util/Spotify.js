@@ -3,7 +3,7 @@ const redirectURI = "http://localhost:3000/";
 
 let userAccessToken;
 
-export const Spotify = {
+const Spotify = {
     getAccessToken () {
         if (userAccessToken) {
             return userAccessToken;
@@ -33,7 +33,6 @@ export const Spotify = {
         //get the accessToken first!
         const accessToken = Spotify.getAccessToken();
 
-        //accepts search term input paramter
         //pass the search term value (term) to a Spotify Request
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: {
@@ -44,7 +43,6 @@ export const Spotify = {
         }).then(jsonResponse => {
             //code to execute with jsonReeponse
             // return the response as a list of tracks in json format
-            console.log(jsonResponse);
            if (!jsonResponse.tracks) {
                return [];
            }
@@ -58,6 +56,95 @@ export const Spotify = {
                 }) 
             )
         });    
-    }  
+    },
+    
+
+    async savePlaylist(name, trackUris) {
+        if (!name || !trackUris.length) {          
+            return;
+        }
+        let currentAccessToken = Spotify.getAccessToken();
+        let headers = {
+            Authorization: `Bearer ${currentAccessToken}`
+        };
+        let userId;
+
+        //get userId
+        await fetch(`https://api.spotify.com/v1/me`, {
+            headers : headers
+        }).then(response => 
+            {
+                if (response.ok) {
+                return response.json()
+            }
+            throw new Error('Request Failed!');
+        }, networkError=>{
+            console.log(networkError.message);
+        }
+            
+        ).then(jsonResponse => {   
+            userId = jsonResponse.id;
+            console.log(userId);
+            
+        })
+
+        //make post request to create a new playlist and returns a playlist id
+        const urlToFetch = `https://api.spotify.com/v1/users/${userId}/playlists`;
+        let addPlaylistHeaders = 
+            {
+                Authorization: `Bearer ${currentAccessToken}`,
+                'Content-Type': 'application/json',
+            }
+
+        
+        let playlistID;
+
+        await fetch(urlToFetch, {
+            method: 'POST',
+            headers: addPlaylistHeaders,  
+            body: JSON.stringify({name: name})
+        }).then(
+        response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Request Failed!');
+        }, networkError => console.log(networkError.message)
+        ).then(
+            jsonResponse => {
+                console.log(jsonResponse);
+                playlistID = jsonResponse.id;
+                console.log(playlistID);
+            }
+        )
+
+         //make post request to add tracks to the playlist (array)   
+            const urlToAddTracks = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
+            const instructions = {
+                method: 'POST',
+                headers: addPlaylistHeaders,
+                body: JSON.stringify({uris: trackUris})
+            }
+
+            await fetch(urlToAddTracks, instructions).then(
+                response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Request failed!')
+                }, networkError => {
+                    console.log(networkError.message)
+                }
+                
+            ).then(
+                jsonResponse => {
+                    console.log(jsonResponse);
+                    playlistID = jsonResponse.id
+                    console.log(playlistID);
+                }
+            )
+
+    }
 };
 
+export default Spotify;
