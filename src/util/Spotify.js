@@ -25,13 +25,14 @@ const Spotify = {
             } else {
                 const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
                 window.location = accessUrl;
+                
             }
             
     }
     ,
-    search(term) {
+    async search(term) {
         //get the accessToken first!
-        const accessToken = Spotify.getAccessToken();
+        const accessToken = await Spotify.getAccessToken();
 
         //pass the search term value (term) to a Spotify Request
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
@@ -44,6 +45,7 @@ const Spotify = {
             //code to execute with jsonReeponse
             // return the response as a list of tracks in json format
            if (!jsonResponse.tracks) {
+               console.log('this happens');
                return [];
            }
             return jsonResponse.tracks.items.map(track => (
