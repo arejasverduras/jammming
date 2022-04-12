@@ -1,4 +1,5 @@
 import React from 'react';
+import { default as SpotifyTools }  from '../../util/Spotify';
 
 export class SpotifyPlayer extends React.Component {
     render() {
@@ -8,8 +9,8 @@ export class SpotifyPlayer extends React.Component {
         <button id="togglePlay">Play / Pause</button>
         <script src="https://sdk.scdn.co/spotify-player.js"></script>
         <script>{
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = 'BQB2zaIw868nzSKW-A6iNSaSXIVpAYD535ZYjUAqT06CiBVxVEPaGBr_8a58yHUezD9W1IpuemJasOFUQvXUZ2ET-4klTE_MwGnjU8Axu8B_QYlqRWNQGvoRmnvu8O_nuKrMPrFKt3u9q6sd0Y_1EwxNXMYFE5M';
+         window.onSpotifyWebPlaybackSDKReady = () => {
+            const token =  SpotifyTools.getAccessToken();
             const player = new window.Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
@@ -43,7 +44,11 @@ export class SpotifyPlayer extends React.Component {
             };
 
             player.connect();
-        }}
+            
+        }
+        
+        
+        }
             </script>
             </div>
         )
