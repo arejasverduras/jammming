@@ -10,7 +10,7 @@ export class SpotifyPlayer extends React.Component {
         <script>{
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = 'BQB2zaIw868nzSKW-A6iNSaSXIVpAYD535ZYjUAqT06CiBVxVEPaGBr_8a58yHUezD9W1IpuemJasOFUQvXUZ2ET-4klTE_MwGnjU8Axu8B_QYlqRWNQGvoRmnvu8O_nuKrMPrFKt3u9q6sd0Y_1EwxNXMYFE5M';
-            const player = new Spotify.Player({
+            const player = new window.Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
                 volume: 0.5
