@@ -3,7 +3,7 @@ const redirectURI = "http://localhost:3000/";
 
 let userAccessToken;
 
-const lSpotify = {
+const Spotify = {
     getAccessToken () {
         if (userAccessToken) {
             return userAccessToken;
@@ -32,7 +32,7 @@ const lSpotify = {
     ,
     async search(term) {
         //get the accessToken first!
-        const accessToken = await lSpotify.getAccessToken();
+        const accessToken = await Spotify.getAccessToken();
 
         //pass the search term value (term) to a Spotify Request
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
@@ -65,7 +65,7 @@ const lSpotify = {
         if (!name || !trackUris.length) {          
             return;
         }
-        let currentAccessToken = lSpotify.getAccessToken();
+        let currentAccessToken = Spotify.getAccessToken();
         let headers = {
             Authorization: `Bearer ${currentAccessToken}`
         };
@@ -149,4 +149,4 @@ const lSpotify = {
     }
 };
 
-export default lSpotify;
+export default Spotify;

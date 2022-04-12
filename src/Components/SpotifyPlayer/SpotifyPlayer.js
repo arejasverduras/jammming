@@ -3,9 +3,9 @@ import React from 'react';
 export class SpotifyPlayer extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Spotify Web Playback SDK Quick Start</h1>
-        <button id="togglePlay">Toggle Play</button>
+            <div className='controlsContainer'>
+                
+        <button id="togglePlay">Play / Pause</button>
         <script src="https://sdk.scdn.co/spotify-player.js"></script>
         <script>{
         window.onSpotifyWebPlaybackSDKReady = () => {
