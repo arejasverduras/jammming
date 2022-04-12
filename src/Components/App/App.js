@@ -5,6 +5,7 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
 import Spotify  from '../../util/Spotify';
+import { SpotifyPlayer } from '../SpotifyPlayer/SpotifyPlayer';
 
 export class App extends React.Component {
   constructor(props){
@@ -70,7 +71,7 @@ export class App extends React.Component {
     <div>
     <h1>Ja<span className="highlight">mmm</span>ing</h1>
     <div className="App">
-      {/* <SpotifyPlayer /> */}
+      <SpotifyPlayer />
       <SearchBar
         onSearch={this.search} />
       <div className="App-playlist">
