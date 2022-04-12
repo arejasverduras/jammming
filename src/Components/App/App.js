@@ -70,6 +70,7 @@ export class App extends React.Component {
     <div>
     <h1>Ja<span className="highlight">mmm</span>ing</h1>
     <div className="App">
+      {/* <SpotifyPlayer /> */}
       <SearchBar
         onSearch={this.search} />
       <div className="App-playlist">
