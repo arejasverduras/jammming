@@ -1,5 +1,5 @@
 const clientID = 'df3bf367945c41c49b4f5e1d9de975b3';
-const redirectURI = 'arejas_jammming.surge.sh';
+const redirectURI = 'https://arejas_jammming.surge.sh';
 
 let userAccessToken;
 
