@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Jammming
+Spotify web-client that allows you to search songs & create playlist on Spotify using the Spotify API.
+Codecademy practice project
+> Live link [_here_](https://arejas_jammming.surge.sh)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
 
-## Available Scripts
 
-In the project directory, you can run:
+## General Information
+This project was meant to practice connecting to an external api, authenticating as a user, loading data and adding data to it using a front-end React app. Practice project from codecademy Full-Stack Developer career path.
 
-### `npm start`
+## Technologies Used
+- React
+- Javascript
+- CSs
+- HTML
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+- Login to personal spotify account on page load
+- Search Spotify database for anything
+- Display songs from search result in formatted content
+- Add songs from search result to a list
+- Remove files from this last
+- Give the list a name, and save as spotify playlist to the user's account
+- The Playlist is directly visible in the user's Spotify application
+- Select the webapp as a device to play / pause songs. The songs will play trough the browser app.
+- Play / Pause button. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+- Authenticate your spotify account on page load
+- Search for songs
+- Add songs to playlist using the '+' sign next to a song
+- Remove a song from the playlist clicking the '-' sign next to a song
+- Give the playlist a name
+- Save the playlist to user account by clicking the button
 
-### `npm run build`
+To Play trough the browser
+- Go to your official spotify application of choice(desktop / mobile app)
+- Under connected devices, select the web app
+- Use the play / pause button in the webapp to alter the play state
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project Status
+Project is:  _completed_ 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Room for Improvement
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Room for improvement:
+- select song from search result and play directly in the browser
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+Created by [@arejasverduras](https://arejasportfolio.surge.sh/) - feel free to contact me!
